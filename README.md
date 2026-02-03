@@ -17,5 +17,5 @@
 
 2. **下载代码**
    ```bash
-   git clone [[https://github.com/MoBai-Curt/NZM-](https://github.com/MoBai-Curt/NZM-)](https://github.com/MoBai-Curt/NZM-.git)
+   git clone [https://github.com/MoBai-Curt/NZM-Stats-Tool.git](https://github.com/MoBai-Curt/NZM-Stats-Tool.git)
    cd NZM-Stats-Tool
