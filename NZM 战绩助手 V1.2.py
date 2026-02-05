@@ -696,7 +696,7 @@ class MainFrame(ctk.CTkFrame):
         nav.pack(fill="x")
         
         zone_name = "QQ区" if self.api.auth_mode == "qq" else "微信区"
-        ctk.CTkLabel(nav, text=f"战绩看板 ({zone_name})", font=("微软雅黑", 20, "bold"), text_color="white").pack(side="left", padx=30, pady=15)
+        ctk.CTkLabel(nav, text=f"NZM 战绩 ({zone_name})", font=("微软雅黑", 20, "bold"), text_color="white").pack(side="left", padx=30, pady=15)
         
         ctk.CTkButton(nav, text="注销", width=60, fg_color=THEME["red"], command=logout_cb).pack(side="right", padx=20)
         ctk.CTkButton(nav, text="刷新", width=60, command=self.init_data).pack(side="right", padx=5)
@@ -1060,7 +1060,7 @@ class App(ctk.CTk):
         super().__init__()
         self.api = NZMApi()
         self.proc = ImageProcessor()
-        self.title(f"NZM 战绩助手 {CURRENT_VERSION} (双区增强版)")
+        self.title(f"NZM 战绩助手 {CURRENT_VERSION} (双区版)")
         self.geometry("1440x900")
         self.configure(fg_color=THEME["bg"])
         
