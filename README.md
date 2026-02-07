@@ -5,7 +5,7 @@
   <p align="center">
     一款基于 .NET 8 + WPF 构建的现代化逆战战绩查询工具。
     <br />
-    <a href="http://mobaiya.icu/"><strong>探索本项目的博客</strong></a>
+    <a href="http://mobaiya.icu/"><strong>作者博客</strong></a>
     <br />
     <br />
     <a href="#下载">下载最新版</a>
