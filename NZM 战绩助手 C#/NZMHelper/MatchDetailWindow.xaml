@@ -1,0 +1,156 @@
+<Window x:Class="NZMHelper.MatchDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="对局详情" Height="800" Width="1200"
+        Background="{StaticResource BgBrush}" WindowStartupLocation="CenterScreen">
+	<ScrollViewer>
+		<Border Padding="20">
+			<StackPanel>
+				<TextBlock x:Name="TxtLoading" Text="加载数据中..." Foreground="#94a3b8" HorizontalAlignment="Center" Margin="0,20"/>
+
+				<ItemsControl x:Name="PlayerList">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<UniformGrid Columns="3" VerticalAlignment="Top"/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Background="{StaticResource CardBgBrush}" CornerRadius="8" Margin="5" Padding="15">
+								<StackPanel>
+									<Grid Margin="0,0,0,10">
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto"/>
+											<ColumnDefinition Width="*"/>
+										</Grid.ColumnDefinitions>
+										<Ellipse Width="45" Height="45">
+											<Ellipse.Fill>
+												<ImageBrush ImageSource="{Binding Avatar}"/>
+											</Ellipse.Fill>
+										</Ellipse>
+										<StackPanel Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center">
+											<TextBlock Text="{Binding Nickname}" Foreground="White" FontWeight="Bold" FontSize="14"/>
+											<TextBlock Text="{Binding ScoreText}" Foreground="#ccc" FontSize="11"/>
+											<TextBlock Text="{Binding BossDmgText}" Foreground="#888" FontSize="10"/>
+										</StackPanel>
+									</Grid>
+
+									<Expander Header="查看配装" Foreground="#94a3b8">
+										<ItemsControl ItemsSource="{Binding Weapons}">
+											<ItemsControl.ItemsPanel>
+												<ItemsPanelTemplate>
+													<WrapPanel/>
+												</ItemsPanelTemplate>
+											</ItemsControl.ItemsPanel>
+											<ItemsControl.ItemTemplate>
+												<DataTemplate>
+													<Border Background="#0f172a" BorderThickness="1" BorderBrush="{Binding QualityColor}" Margin="2" Width="90">
+														<StackPanel Margin="5">
+															<Image Source="{Binding Icon}" Height="35"/>
+															<TextBlock Text="{Binding Name}" Foreground="{Binding QualityColor}" FontSize="10" TextWrapping="Wrap" TextAlignment="Center" Margin="0,2,0,5"/>
+															<ItemsControl ItemsSource="{Binding Plugins}">
+																<ItemsControl.ItemsPanel>
+																	<ItemsPanelTemplate>
+																		<UniformGrid Columns="2"/>
+																	</ItemsPanelTemplate>
+																</ItemsControl.ItemsPanel>
+																<ItemsControl.ItemTemplate>
+																	<DataTemplate>
+																		<Image Source="{Binding}" Width="30" Height="30" Margin="1"/>
+																	</DataTemplate>
+																</ItemsControl.ItemTemplate>
+															</ItemsControl>
+														</StackPanel>
+													</Border>
+												</DataTemplate>
+											</ItemsControl.ItemTemplate>
+										</ItemsControl>
+									</Expander>
+								</StackPanel>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+
+				<Border x:Name="SelfStatsBar" Background="#0B1120" BorderBrush="#334155" BorderThickness="1" CornerRadius="10" Padding="20" Margin="5,20,5,0" Visibility="Collapsed">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="80">
+							<Ellipse Width="60" Height="60" HorizontalAlignment="Center">
+								<Ellipse.Fill>
+									<ImageBrush ImageSource="{Binding SelfAvatar}"/>
+								</Ellipse.Fill>
+							</Ellipse>
+							<TextBlock Text="{Binding SelfName}" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+						</StackPanel>
+
+						<UniformGrid Grid.Column="1" Rows="1" Margin="20,0">
+							<StackPanel>
+								<TextBlock Text="积分" Foreground="#94a3b8" FontSize="12"/>
+								<TextBlock Text="{Binding SelfScore}" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Impact"/>
+							</StackPanel>
+							<StackPanel>
+								<TextBlock Text="击杀" Foreground="#94a3b8" FontSize="12"/>
+								<TextBlock Text="{Binding SelfKills}" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Impact"/>
+							</StackPanel>
+							<StackPanel>
+								<TextBlock Text="死亡" Foreground="#94a3b8" FontSize="12"/>
+								<TextBlock Text="{Binding SelfDeaths}" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Impact"/>
+							</StackPanel>
+							<StackPanel>
+								<TextBlock Text="BOSS伤害" Foreground="#94a3b8" FontSize="12"/>
+								<TextBlock Text="{Binding SelfBossDmg}" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Impact"/>
+							</StackPanel>
+							<StackPanel>
+								<TextBlock Text="小怪伤害" Foreground="#94a3b8" FontSize="12"/>
+								<TextBlock Text="{Binding SelfMobsDmg}" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Impact"/>
+							</StackPanel>
+							<StackPanel>
+								<TextBlock Text="金币" Foreground="#94a3b8" FontSize="12"/>
+								<TextBlock Text="{Binding SelfCoin}" Foreground="White" FontSize="20" FontWeight="Bold" FontFamily="Impact"/>
+							</StackPanel>
+						</UniformGrid>
+
+						<Button Grid.Column="2" Content="查看我的配装" Click="BtnToggleSelfEquip_Click" Background="#334155" Height="30" VerticalAlignment="Top"/>
+					</Grid>
+				</Border>
+
+				<ItemsControl x:Name="SelfEquipList" Visibility="Collapsed" Margin="5,10,5,0">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<WrapPanel/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<Border Background="#0f172a" BorderThickness="1" BorderBrush="{Binding QualityColor}" Margin="2" Width="90">
+								<StackPanel Margin="5">
+									<Image Source="{Binding Icon}" Height="35"/>
+									<TextBlock Text="{Binding Name}" Foreground="{Binding QualityColor}" FontSize="10" TextWrapping="Wrap" TextAlignment="Center" Margin="0,2,0,5"/>
+									<ItemsControl ItemsSource="{Binding Plugins}">
+										<ItemsControl.ItemsPanel>
+											<ItemsPanelTemplate>
+												<UniformGrid Columns="2"/>
+											</ItemsPanelTemplate>
+										</ItemsControl.ItemsPanel>
+										<ItemsControl.ItemTemplate>
+											<DataTemplate>
+												<Image Source="{Binding}" Width="30" Height="30" Margin="1"/>
+											</DataTemplate>
+										</ItemsControl.ItemTemplate>
+									</ItemsControl>
+								</StackPanel>
+							</Border>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+
+			</StackPanel>
+		</Border>
+	</ScrollViewer>
+</Window>
