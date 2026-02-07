@@ -48,13 +48,12 @@
 
 | 登录界面 | 战绩概览 |
 |:---:|:---:|
-| <img src="Put_Your_Login_Image_Link_Here" alt="登录" width="400"/> | <img src="Put_Your_Main_Image_Link_Here" alt="主页" width="400"/> |
+| <img src="./screenshots/login.png" alt="登录" width="400"/> | <img src="./screenshots/home.png" alt="主页" width="400"/> |
 
 | 详细数据 | 图鉴系统 |
 |:---:|:---:|
-| <img src="Put_Your_Detail_Image_Link_Here" alt="详情" width="400"/> | <img src="Put_Your_Collection_Image_Link_Here" alt="图鉴" width="400"/> |
+| <img src="./screenshots/detail.png" alt="详情" width="400"/> | <img src="./screenshots/collection.png" alt="图鉴" width="400"/> |
 
-> *注：请将上面的图片链接替换为你仓库里的实际图片地址。*
 
 ## 🚀 快速开始
 
