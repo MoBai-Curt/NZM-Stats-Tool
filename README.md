@@ -10,7 +10,7 @@
     <br />
     <a href="#下载">下载最新版</a>
     ·
-    <a href="https://github.com/MoBai-Curt/NZMHelper/issues">报告 Bug</a>
+    <a href="[https://github.com/MoBai-Curt/NZMHelper/issues](https://github.com/MoBai-Curt/NZM-Stats-Tool/issues)">报告 Bug</a>
     ·
     <a href="https://github.com/MoBai-Curt/NZMHelper/pulls">发起请求</a>
   </p>
