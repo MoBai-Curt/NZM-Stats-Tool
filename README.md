@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://via.placeholder.com/150" alt="Logo" width="120" height="120">
+  <img src="./screenshots/logo.png" alt="Logo" width="120" height="120">
   <h1 align="center">NZM 战绩助手 (NZM Helper)</h1>
 
   <p align="center">
