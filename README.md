@@ -47,10 +47,8 @@
 ## 📸 界面预览
 
 | 登录界面 | 战绩概览 |
-|:---:|:---:|
 | <img src="./screenshots/login.png" alt="登录" width="400"/> | <img src="./screenshots/战绩概览.png" alt="主页" width="400"/> |
 | 详细数据 | 图鉴系统 |
-|:---:|:---:|
 | <img src="./screenshots/详细数据.png" alt="详情" width="400"/> | <img src="./screenshots/图鉴系统.png" alt="图鉴" width="400"/> |
 
 ## 🚀 快速开始
