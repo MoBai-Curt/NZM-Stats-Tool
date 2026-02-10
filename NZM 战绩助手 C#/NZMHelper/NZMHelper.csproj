@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+
+		<Version>1.5.0</Version>
+		<Authors>MoBai</Authors>
+		<Copyright>Copyright © 2026 MoBai</Copyright>
+		<Description>请勿用于非法用途，如用户用于非法用途与作者无关，用户自行承担。</Description>
+		<Title>NZM 战绩查询工具</Title>
+		<PackageId>NZM.MoBai</PackageId>
+		<Product>NZM</Product>
+
+		<PackageIcon>poster.png</PackageIcon>
+		<ApplicationIcon>favicon.ico</ApplicationIcon>
+
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+
+		<PublishSingleFile>true</PublishSingleFile>
+
+		<SelfContained>true</SelfContained>
+
+		<EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+
+		<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+		<PublishTrimmed>false</PublishTrimmed>
+
+		<DebugType>none</DebugType>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="favicon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\..\..\Desktop\poster.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,352 @@
+﻿<Window x:Class="NZMHelper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="NZM 战绩助手 V1.5.0" Height="850" Width="1280"
+        Background="{DynamicResource WindowBackgroundBrush}" 
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow" ResizeMode="CanResize">
+
+    <Window.Resources>
+        <Style x:Key="IconNavButtonStyle" TargetType="RadioButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSubBrush}"/>
+            <Setter Property="Height" Value="56"/>
+            <Setter Property="Width" Value="56"/>
+            <Setter Property="Margin" Value="0,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="12">
+                            <TextBlock Text="{TemplateBinding Content}" FontFamily="Segoe MDL2 Assets" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource CardBgBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource AccentBrush}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource TextMainBrush}"/>
+                    <Setter Property="Background" Value="#1AFFFFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="IconButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource TextSubBrush}"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Margin" Value="0,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                            <TextBlock Text="{TemplateBinding Content}" FontFamily="Segoe MDL2 Assets" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource TextMainBrush}"/>
+                    <Setter Property="Background" Value="#1AFFFFFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Visibility="{DynamicResource GlassBackgroundVisibility}" ZIndex="-1">
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FF0F0C29" Offset="0.0"/>
+                    <GradientStop Color="#FF302B63" Offset="0.5"/>
+                    <GradientStop Color="#FF24243E" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Canvas>
+                <Ellipse Width="700" Height="700" Canvas.Left="-150" Canvas.Top="-200" Opacity="0.5">
+                    <Ellipse.Fill>
+                        <RadialGradientBrush Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                            <GradientStop Color="#FF7B2CBF" Offset="0"/>
+                            <GradientStop Color="#007B2CBF" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Ellipse.Fill>
+                    <Ellipse.Effect>
+                        <BlurEffect Radius="120"/>
+                    </Ellipse.Effect>
+                </Ellipse>
+            </Canvas>
+            <Border Background="#11FFFFFF"/>
+        </Grid>
+
+        <Grid x:Name="LoginGrid" Visibility="Visible" ZIndex="100" Background="{DynamicResource BgBrush}">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20">
+                <Button Content="" ToolTip="检查更新" Click="BtnCheckUpdate_Click" Style="{StaticResource IconButtonStyle}"/>
+                <Button Content="" ToolTip="切换主题" Click="BtnSwitchTheme_Click" Style="{StaticResource IconButtonStyle}" Foreground="{DynamicResource AccentBrush}"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="420">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,50">
+                    <Image Source="/favicon.ico" Width="48" Height="48" Margin="0,0,15,0" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    <TextBlock Text="NZM 战绩助手" Foreground="{DynamicResource TextMainBrush}" FontSize="28" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+                <TabControl Background="Transparent" BorderThickness="0">
+                    <TabItem Header="QQ 扫码登录">
+                        <StackPanel Margin="0,30,0,20">
+                            <Border Background="White" Width="160" Height="160" CornerRadius="12" HorizontalAlignment="Center" Margin="0,0,0,20">
+                                <Image x:Name="QrImage" Stretch="Uniform" Margin="10"/>
+                            </Border>
+                            <TextBlock x:Name="QrStatusText" Text="请使用手机 QQ 扫码" Foreground="{DynamicResource TextSubBrush}" HorizontalAlignment="Center" FontSize="14" Margin="0,0,0,25"/>
+                            <Button Content="获取二维码" Click="BtnGetQr_Click" Width="200" Height="44" FontSize="15"/>
+                        </StackPanel>
+                    </TabItem>
+                    <TabItem Header="微信 Cookie 登录">
+                        <StackPanel Margin="0,30,0,20">
+                            <TextBlock Text="请粘贴抓包获取的完整 Cookie:" Foreground="{DynamicResource TextSubBrush}" Margin="0,0,0,10" FontSize="14"/>
+                            <TextBox x:Name="WxCookieInput" Height="140" TextWrapping="Wrap" Background="{DynamicResource CardBgBrush}" Foreground="{DynamicResource TextMainBrush}" BorderThickness="1" BorderBrush="{DynamicResource DividerBrush}" Padding="12" Margin="0,0,0,25" VerticalContentAlignment="Top" FontSize="13"/>
+                            <Button Content="登录查询" Click="BtnLoginManual_Click" Width="200" Height="44" FontSize="15"/>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="MainGrid" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="{DynamicResource NavBgBrush}" BorderBrush="{DynamicResource DividerBrush}" BorderThickness="0,0,1,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0" Margin="0,35,0,25" HorizontalAlignment="Center">
+                        <Image Source="/favicon.ico" Width="36" Height="36" RenderOptions.BitmapScalingMode="HighQuality" ToolTip="{Binding ElementName=TxtAppTitle, Path=Text}"/>
+                    </Border>
+                    <TextBlock x:Name="TxtAppTitle" Visibility="Collapsed" Text="NZM Helper"/>
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                        <RadioButton Content="&#xE9D2;" ToolTip="战绩概览" Style="{StaticResource IconNavButtonStyle}" IsChecked="True" Click="Nav_Stats_Click"/>
+                        <RadioButton Content="&#xE8F1;" ToolTip="图鉴查询" Style="{StaticResource IconNavButtonStyle}" Click="Nav_Coll_Click"/>
+                        <Border Height="1" Background="{DynamicResource DividerBrush}" Margin="15,20" Opacity="0.3"/>
+                        <Button Content="&#xE74C;" ToolTip="碎片悬浮窗" Click="BtnOpenFragment_Click" Style="{StaticResource IconButtonStyle}"/>
+                        <Button Content="&#xE896;" ToolTip="检查更新" Click="BtnCheckUpdate_Click" Style="{StaticResource IconButtonStyle}"/>
+                        <Button Content="&#xE946;" ToolTip="使用说明 &amp; 公告" Click="BtnAuthorInfo_Click" Style="{StaticResource IconButtonStyle}"/>
+                        <Button Content="&#xE790;" ToolTip="切换主题" Click="BtnSwitchTheme_Click" Style="{StaticResource IconButtonStyle}" Foreground="{DynamicResource AccentBrush}"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Margin="0,0,0,30" HorizontalAlignment="Center">
+                        <Button Content="&#xE72C;" ToolTip="刷新数据" Click="BtnRefresh_Click" Style="{StaticResource IconButtonStyle}" Foreground="{StaticResource GreenBrush}"/>
+                        <Button Content="&#xF3B1;" ToolTip="退出登录" Click="BtnLogout_Click" Style="{StaticResource IconButtonStyle}" Foreground="{StaticResource RedBrush}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Column="1" Background="Transparent">
+                <ScrollViewer x:Name="ViewStats" Visibility="Visible" Padding="40,30">
+                    <StackPanel>
+                        <TextBlock Text="官方历史数据" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource TextMainBrush}" Margin="0,0,0,15"/>
+                        <UniformGrid Columns="2" Margin="0,0,0,30">
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,15,0">
+                                <StackPanel>
+                                    <TextBlock Text="历史总场次" Foreground="{DynamicResource TextSubBrush}"/>
+                                    <TextBlock x:Name="TxtTotalGames" Text="--" Foreground="{DynamicResource TextMainBrush}" FontSize="48" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="历史总时长" Foreground="{DynamicResource TextSubBrush}"/>
+                                    <TextBlock x:Name="TxtTotalHours" Text="--" Foreground="{DynamicResource TextMainBrush}" FontSize="48" FontWeight="Bold"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+
+                        <TextBlock Text="近期战绩统计 (近30天/100场)" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource TextMainBrush}" Margin="0,0,0,20"/>
+                        <UniformGrid Columns="3" Margin="0,0,0,20">
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,15,0">
+                                <StackPanel>
+                                    <TextBlock Text="近期场次" Foreground="{DynamicResource TextSubBrush}"/>
+                                    <TextBlock x:Name="TxtRecentCount" Text="--" Foreground="{DynamicResource TextMainBrush}" FontSize="36" FontWeight="Bold" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}" Margin="0,0,15,0">
+                                <StackPanel>
+                                    <TextBlock Text="近期胜率" Foreground="{DynamicResource TextSubBrush}"/>
+                                    <TextBlock x:Name="TxtRecentWinRate" Text="--" Foreground="{DynamicResource AccentBrush}" FontSize="36" FontWeight="Bold" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Border>
+                            <Border Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="场均伤害" Foreground="{DynamicResource TextSubBrush}"/>
+                                    <TextBlock x:Name="TxtRecentAvgDmg" Text="--" Foreground="{StaticResource YellowBrush}" FontSize="36" FontWeight="Bold" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </UniformGrid>
+
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Style="{StaticResource CardStyle}" Margin="0,0,15,0">
+                                <StackPanel>
+                                    <TextBlock Text="常玩地图" Foreground="{DynamicResource TextMainBrush}" FontWeight="Bold" FontSize="16" Margin="0,0,0,15"/>
+                                    <ItemsControl x:Name="MapStatList">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <UniformGrid Columns="2" VerticalAlignment="Top"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,10,15" Height="85">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="120"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border CornerRadius="8" ClipToBounds="True" Background="#333">
+                                                        <Image Source="{Binding Icon}" Stretch="UniformToFill" Opacity="0.8"/>
+                                                    </Border>
+                                                    <StackPanel Grid.Column="1" Margin="15,0,0,0">
+                                                        <TextBlock Text="{Binding Name}" Foreground="{DynamicResource TextMainBrush}" FontWeight="Bold" FontSize="15" Margin="0,0,0,4"/>
+                                                        <TextBlock Text="{Binding TotalWinRate}" Foreground="{DynamicResource TextSubBrush}" FontSize="12" Margin="0,0,0,6"/>
+                                                        <ItemsControl ItemsSource="{Binding Diffs}">
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <TextBlock Text="{Binding DisplayText}" Foreground="{DynamicResource TextSubBrush}" FontSize="11" Margin="0,1,0,0"/>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource CardStyle}">
+                                <StackPanel>
+                                    <TextBlock Text="模式偏好" Foreground="{DynamicResource TextMainBrush}" FontWeight="Bold" FontSize="16" Margin="0,0,0,15"/>
+                                    <ItemsControl x:Name="ModeStatList">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,0,12">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Name}" Foreground="{DynamicResource TextMainBrush}"/>
+                                                        <TextBlock Text="{Binding DetailText}" Foreground="{DynamicResource TextSubBrush}" FontSize="11"/>
+                                                    </StackPanel>
+                                                    <TextBlock Grid.Column="1" Text="{Binding TotalText}" Foreground="{DynamicResource TextMainBrush}" FontWeight="Bold" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,15">
+                                <TextBlock Text="对局历史" Foreground="{DynamicResource TextMainBrush}" FontSize="20" FontWeight="Bold"/>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Content="全部" Click="FilterGames_Click" Tag="all" Background="{DynamicResource CardBgBrush}" Margin="5,0"/>
+                                    <Button Content="猎场" Click="FilterGames_Click" Tag="hunt" Background="Transparent" Foreground="{DynamicResource TextSubBrush}" Margin="5,0"/>
+                                    <Button Content="塔防" Click="FilterGames_Click" Tag="td" Background="Transparent" Foreground="{DynamicResource TextSubBrush}" Margin="5,0"/>
+                                </StackPanel>
+                            </DockPanel>
+                            <ItemsControl x:Name="GamesList">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{DynamicResource CardBgBrush}" CornerRadius="8" Margin="0,0,0,8" Padding="20,12" BorderThickness="1" BorderBrush="{DynamicResource DividerBrush}">
+                                            <Border.InputBindings>
+                                                <MouseBinding Gesture="LeftClick" Command="{Binding DataContext.OpenDetailCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding RoomId}"/>
+                                            </Border.InputBindings>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="80"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Border CornerRadius="8" ClipToBounds="True" Height="50" Background="#111">
+                                                    <Image Source="{Binding MapIcon}" Stretch="UniformToFill"/>
+                                                </Border>
+                                                <StackPanel Grid.Column="1" Margin="20,0,0,0" VerticalAlignment="Center">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="{Binding Result}" Foreground="{Binding ResultColor}" FontWeight="Bold" FontSize="16" Margin="0,0,15,0"/>
+                                                        <TextBlock Text="{Binding Mode}" Foreground="{DynamicResource TextSubBrush}" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                    <TextBlock Text="{Binding DetailText}" Foreground="{DynamicResource TextSubBrush}" FontSize="12" Margin="0,3,0,0"/>
+                                                </StackPanel>
+                                                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding Score}" Foreground="{StaticResource RedBrush}" FontSize="18" FontWeight="Bold" FontFamily="Consolas" HorizontalAlignment="Right"/>
+                                                    <TextBlock Text="{Binding Duration}" Foreground="{DynamicResource TextSubBrush}" FontSize="12" HorizontalAlignment="Right"/>
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,25,0,30">
+                                <Button Content="上一页" Click="BtnPagePrev_Click" Background="{DynamicResource CardBgBrush}" Foreground="{DynamicResource TextMainBrush}" Width="90"/>
+                                <TextBlock x:Name="TxtPageInfo" Text="1 / 1" Foreground="{DynamicResource TextSubBrush}" VerticalAlignment="Center" Margin="25,0"/>
+                                <Button Content="下一页" Click="BtnPageNext_Click" Background="{DynamicResource CardBgBrush}" Foreground="{DynamicResource TextMainBrush}" Width="90"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <ScrollViewer x:Name="ViewCollection" Visibility="Collapsed" Padding="40,30">
+                    <StackPanel>
+                        <DockPanel Margin="0,0,0,20">
+                            <TextBlock x:Name="TxtCollTitle" Text="图鉴查询" FontSize="22" FontWeight="Bold" Foreground="{DynamicResource TextMainBrush}" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button Content="武器" Click="SwitchColl_Click" Tag="weapon" Margin="5,0"/>
+                                <Button Content="插件" Click="SwitchColl_Click" Tag="plugin" Background="Transparent" Foreground="#94a3b8" Margin="5,0"/>
+                                <Button Content="塔防" Click="SwitchColl_Click" Tag="trap" Background="Transparent" Foreground="#94a3b8" Margin="5,0"/>
+                            </StackPanel>
+                        </DockPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                            <Button Content="全部" Click="FilterColl_Click" Tag="all" Background="#3f3f46" Height="26" FontSize="12" Margin="0,0,5,0"/>
+                            <Button Content="传说" Click="FilterColl_Click" Tag="4" Background="Transparent" BorderBrush="{StaticResource LegendaryBrush}" BorderThickness="1" Foreground="{StaticResource LegendaryBrush}" Height="26" FontSize="12" Margin="5,0"/>
+                            <Button Content="史诗" Click="FilterColl_Click" Tag="3" Background="Transparent" BorderBrush="{StaticResource EpicBrush}" BorderThickness="1" Foreground="{StaticResource EpicBrush}" Height="26" FontSize="12" Margin="5,0"/>
+                            <Button Content="稀有" Click="FilterColl_Click" Tag="2" Background="Transparent" BorderBrush="{StaticResource RareBrush}" BorderThickness="1" Foreground="{StaticResource RareBrush}" Height="26" FontSize="12" Margin="5,0"/>
+                        </StackPanel>
+                        <ItemsControl x:Name="CollectionList">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <UniformGrid Columns="6"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{DynamicResource CardBgBrush}" BorderThickness="1" BorderBrush="{Binding BorderColor}" Margin="5" CornerRadius="4">
+                                        <Grid>
+                                            <Border HorizontalAlignment="Right" VerticalAlignment="Top" Background="{Binding BorderColor}" CornerRadius="0,3,0,4" Padding="6,2">
+                                                <TextBlock Text="{Binding QualityText}" Foreground="White" FontSize="10" FontWeight="Bold"/>
+                                            </Border>
+                                            <StackPanel Margin="10">
+                                                <Image Source="{Binding Icon}" Height="60" Margin="0,15,0,10"/>
+                                                <TextBlock Text="{Binding Name}" Foreground="{Binding TextColor}" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" TextTrimming="CharacterEllipsis"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
