@@ -14,7 +14,7 @@ namespace NZMHelper.Core
         public const string CURRENT_VERSION = "V1.5.0";
         public const int SEASON_ID = 1;
 
-        public const string URL_REMOTE_CONFIG = "http://mobaiya.icu/files/version.json";
+        public const string URL_REMOTE_CONFIG = "http://mobaiya.icu/files/version.json"; //请各位大佬 手下留情 这个只是公告和软件更新无其他内容
 
         public const string STATIC_ANNOUNCEMENT =
             "欢迎使用 NZM 战绩助手\n\n" +
@@ -71,4 +71,5 @@ namespace NZMHelper.Core
         public static async Task<BitmapImage> LoadImageAsync(string url) { if (string.IsNullOrEmpty(url)) return null; try { url = System.Net.WebUtility.UrlDecode(url); string cacheDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "cache"); if (!Directory.Exists(cacheDir)) Directory.CreateDirectory(cacheDir); string hash = BitConverter.ToString(System.Security.Cryptography.MD5.Create().ComputeHash(Encoding.UTF8.GetBytes(url))).Replace("-", ""); string filePath = Path.Combine(cacheDir, hash + ".png"); if (File.Exists(filePath)) return LoadBitmapFromFile(filePath); var bytes = await _httpClient.GetByteArrayAsync(url); await File.WriteAllBytesAsync(filePath, bytes); return LoadBitmapFromFile(filePath); } catch { return null; } }
         private static BitmapImage LoadBitmapFromFile(string path) { try { var bitmap = new BitmapImage(); bitmap.BeginInit(); bitmap.CacheOption = BitmapCacheOption.OnLoad; bitmap.UriSource = new Uri(path); bitmap.EndInit(); bitmap.Freeze(); return bitmap; } catch { return null; } }
     }
+
 }
