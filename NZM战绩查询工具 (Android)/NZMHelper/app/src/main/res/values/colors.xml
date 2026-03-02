@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="window_background">#18181b</color>
+    <color name="card_background">#27272a</color>
+    <color name="nav_background">#121212</color>
+    <color name="text_main">#f4f4f5</color>
+    <color name="text_sub">#a1a1aa</color>
+    <color name="accent">#3b82f6</color>
+    <color name="win_red">#ef4444</color>
+    <color name="score_yellow">#f59e0b</color>
+    <color name="coin_green">#10b981</color>
+
+    <color name="quality_legend">#f59e0b</color>
+    <color name="quality_epic">#a855f7</color>
+    <color name="quality_rare">#3b82f6</color>
+    <color name="quality_common">#71717a</color>
+</resources>

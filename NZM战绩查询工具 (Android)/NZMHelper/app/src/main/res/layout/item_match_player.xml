@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card"
+    android:padding="12dp"
+    android:layout_marginBottom="12dp">
+
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/imgAvatar" android:layout_width="45dp" android:layout_height="45dp" android:background="#333333" android:scaleType="centerCrop"/>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toEndOf="@id/imgAvatar" android:layout_marginStart="12dp" android:orientation="vertical">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+                <TextView android:id="@+id/tvPlayerName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="--" android:textColor="#f4f4f5" android:textStyle="bold" android:textSize="15sp"/>
+                <TextView android:id="@+id/tvSelfTag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="本人" android:textSize="10sp" android:textColor="#ffffff" android:background="#3b82f6" android:paddingHorizontal="4dp" android:layout_marginStart="6dp" android:visibility="gone"/>
+            </LinearLayout>
+            <TextView android:id="@+id/tvPlayerScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="得分: 0" android:textColor="#f59e0b" android:textSize="12sp" android:layout_marginTop="2dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#333333" android:layout_marginVertical="10dp"/>
+
+    <GridLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:columnCount="2">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BOSS 伤害" android:textColor="#a1a1aa" android:textSize="10sp"/>
+            <TextView android:id="@+id/tvBossDmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#ef4444" android:textSize="15sp" android:textStyle="bold"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="小怪伤害" android:textColor="#a1a1aa" android:textSize="10sp" android:layout_marginTop="8dp"/>
+            <TextView android:id="@+id/tvMobDmg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#f4f4f5" android:textSize="15sp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_columnWeight="1" android:gravity="end" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="获得金币" android:textColor="#a1a1aa" android:textSize="10sp"/>
+            <TextView android:id="@+id/tvCoin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#10b981" android:textSize="15sp" android:textStyle="bold"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="死亡次数" android:textColor="#a1a1aa" android:textSize="10sp" android:layout_marginTop="8dp"/>
+            <TextView android:id="@+id/tvDeath" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textColor="#a1a1aa" android:textSize="15sp"/>
+        </LinearLayout>
+    </GridLayout>
+
+    <LinearLayout android:id="@+id/layoutShard" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:layout_marginTop="12dp" android:visibility="gone">
+        <TextView android:id="@+id/tvShardName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="碎片进度" android:textColor="#3b82f6" android:textSize="10sp"/>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="14dp" android:layout_marginTop="4dp">
+            <ProgressBar android:id="@+id/pbShard" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:progressDrawable="@android:drawable/progress_horizontal"/>
+            <TextView android:id="@+id/tvShardValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:text="0/0" android:textColor="#ffffff" android:textSize="9sp" android:textStyle="bold"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

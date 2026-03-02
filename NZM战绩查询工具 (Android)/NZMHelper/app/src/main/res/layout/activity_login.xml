@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#18181b"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NZM 战绩助手"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cookie模式"
+        android:textSize="14sp"
+        android:textColor="#10b981"
+        android:layout_marginBottom="32dp"/>
+
+    <EditText
+        android:id="@+id/etCookie"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="#27272a"
+        android:textColor="#f4f4f5"
+        android:textColorHint="#71717a"
+        android:padding="16dp"
+        android:gravity="top|start"
+        android:inputType="textMultiLine"
+        android:hint="请在此粘贴抓取到的 Cookie\n\n支持以下三种格式：\n1. 微信登录2. QQ登录"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="24dp"
+        android:text="登录"
+        android:backgroundTint="#3b82f6"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="获取方法：在手机逆战未来助手小程序中使用抓包获取请求头中的 Cookie"
+        android:textColor="#71717a"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"/>
+</LinearLayout>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NZM 战绩助手</string>
+    <string name="play_time">%1$d小时</string>
+    <string name="win_rate">胜率: %1$d%%</string>
+    <string name="stats_count">统计场次: %1$d</string>
+    <string name="avg_score">平均得分: %1$d</string>
+    <string name="fav_mode">常用模式: %1$s</string>
+    <string name="fav_map">常用地图: %1$s</string>
+
+    <string name="recent_period">近期统计 (近%1$d场/30天)</string>
+    <string name="recent_empty">近期(30天)无数据</string>
+    <string name="recent_win_rate">近期胜率: %1$d%%</string>
+    <string name="recent_avg_score">近期均分: %1$d</string>
+    <string name="recent_mode">近期模式: %1$s</string>
+    <string name="recent_map">近期地图分布:\n%1$s</string>
+
+    <string name="unknown">未知</string>
+    <string name="map_count_fmt">%1$s: %2$d场</string>
+</resources>
