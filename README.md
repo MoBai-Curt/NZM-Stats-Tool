@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./screenshots/logo.png" alt="Logo" width="120" height="120">
-  <h1 align="center">🎮 NZM 战绩助手 (NZM Helper)</h1>
+  <h1 align="center">🎮 NZM 战绩助手 (NZM-Stats-Tool)</h1>
 
   <p align="center">
     一款跨平台（PC + Android）的现代化《逆战未来》战绩查询与数据分析工具。<br>
@@ -26,7 +26,7 @@
 
 ## 📖 项目简介
 
-**NZM Helper** 包含两个独立客户端：**Windows 桌面版** 与 **Android 移动版**。
+**NZM-Stats-Tool** 包含两个独立客户端：**Windows 桌面版** 与 **Android 移动版**。
 由于官方原扫码网页端严苛的安全风控（WAF）以及移动端底层的协议劫持，常规的 WebView 扫码登录已失效。本项目进行了底层重构，采用了 **“极简纯净的 Cookie 直连模式”** 及 **“原生无感代理抓包”**，彻底解决登录难题。
 
 ---
@@ -73,7 +73,7 @@
 ## 🚀 快速开始与使用指南
 
 ### 方案 A：使用 PC 端（全自动一键登录）
-1. 前往 [Releases](../../releases/latest) 页面下载 `NZMHelper_v1.6.0.exe` (绿色单文件，免安装)。
+1. 前往 [Releases](../../releases/latest) 页面下载 `NZM战绩查询_v1.6.0.exe` (绿色单文件，免安装)。
 2. ⚠️ **必须【右键 -> 以管理员身份运行】** (否则网络拦截器将因权限不足启动失败)。
 3. 在界面中选择区服，点击大按钮 **“开启自动抓取”**。
 4. 在电脑上打开微信，进入 **“逆战未来工具箱”** 小程序并点击战绩页，软件将瞬间捕获凭证并登入！
