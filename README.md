@@ -84,8 +84,8 @@
 ## 🚀 快速开始与使用指南 (Quick Start & Usage Guide)
 
 ### 方案 A：使用 PC 端 - 全自动一键登录 (Option A: PC Version - Auto Login)
-1. 前往 [Releases](../../releases/latest) 页面下载 `NZMHelper_v1.6.0.exe` (绿色单文件，免安装)。
-   * *Go to the [Releases](../../releases/latest) page to download `NZMHelper_v1.6.0.exe` (Portable single file, no installation required).*
+1. 前往 [Releases](../../releases/latest) 页面下载 `NZM战绩查询_v1.6.0.exe` (绿色单文件，免安装)。
+   * *Go to the [Releases](../../releases/latest) page to download `NZM战绩查询_v1.6.0.exe` (Portable single file, no installation required).*
 2. ⚠️ **必须【右键 -> 以管理员身份运行】** (否则网络拦截器将因权限不足启动失败)。
    * ⚠️ ***MUST [Right-click -> Run as administrator]** (Otherwise, the network interceptor will fail to start due to insufficient permissions).*
 3. 在界面中选择区服，点击大按钮 **“开启自动抓取”**。
