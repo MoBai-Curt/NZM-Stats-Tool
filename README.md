@@ -19,7 +19,7 @@
     <img src="https://img.shields.io/badge/.NET-8.0_WPF-purple?style=flat-square&logo=dotnet" alt=".NET 8">
     <img src="https://img.shields.io/badge/Android-12%2B-green?style=flat-square&logo=android" alt="Android">
     <img src="https://img.shields.io/badge/Kotlin-1.9-blueviolet?style=flat-square&logo=kotlin" alt="Kotlin">
-    <img src="https://img.shields.io/badge/License-MIT-success?style=flat-square" alt="License">
+    <img src="https://img.shields.io/badge/License-GPLv3-success?style=flat-square" alt="License">
     <img src="https://img.shields.io/badge/Version-V1.6.0-orange?style=flat-square" alt="Version">
   </p>
 </div>
@@ -105,6 +105,15 @@
 1. 本项目为个人学习与技术交流的开源产物，**完全免费，严禁倒卖**！
 2. 本软件为纯本地客户端工具，**非外挂、不修改任何游戏内存数据**，所有数据均通过合法的官方开放接口读取，**绝不上传、收集或存储用户的任何个人隐私及账号密码**。
 3. 若因用户使用不当（如滥用接口、随意泄露个人 Token/Cookie 给他人等）导致的账号安全问题或封禁，**本项目及作者概不负责，后果由用户自行承担**。
+
+---
+
+## 📜 开源协议与引用说明 (License & Open Source Statement)
+
+本项目鼓励技术交流与共建，但坚守开源精神。
+**任何基于本项目源代码进行二次开发、引用或衍生出的后续项目，都必须同样遵循开源原则，公开其源代码。** 禁止将本项目的代码用于任何闭源的商业或非商业项目中。
+
+> **Open Source Requirement for Derivative Works:** > We encourage technical exchange and contribution, but we stand firmly by the spirit of open source. **Any subsequent projects derived from, referencing, or built upon the source code of this project MUST also be open-sourced and make their source code publicly available.** Incorporating this project's code into closed-source projects (commercial or non-commercial) is strictly prohibited.
 
 ---
 
