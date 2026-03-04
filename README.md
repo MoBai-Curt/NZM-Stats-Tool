@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./screenshots/logo.png" alt="Logo" width="120" height="120">
-  <h1 align="center">🎮 NZM 战绩助手 (NZM Helper)</h1>
+  <h1 align="center">🎮 NZM 战绩助手 (NZM-Stats-Tool)</h1>
 
   <p align="center">
     一款跨平台（PC + Android）的现代化《逆战未来》战绩查询与数据分析工具。<br>
